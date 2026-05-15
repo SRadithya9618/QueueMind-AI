@@ -30,7 +30,10 @@ const io = new Server(server, {
 
 // Middleware
 app.use(cors({
-  origin: "https://queuemind-ai.vercel.app",
+  origin: [
+    "http://localhost:5173",
+    "https://queue-mind-ai.vercel.app"
+  ],
   credentials: true,
 }));
 app.use(express.json());
