@@ -76,13 +76,13 @@ Backend: https://queuemind-ai.onrender.com
 # Screenshots 📸
 
 ## Customer Dashboard
-(Add Screenshot Here)
+![Customer Dashboard](./screenshots/customerdashboard.png)
 
 ## Owner Dashboard
-(Add Screenshot Here)
+![Owner Dashboard](./screenshots/ownerdashboard.png)
 
 ## Queue Management
-(Add Screenshot Here)
+![Queue Management](./screenshots/queuemanagement.png)
 
 ---
 
