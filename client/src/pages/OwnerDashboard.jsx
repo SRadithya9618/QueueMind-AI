@@ -56,19 +56,19 @@ function OwnerDashboard() {
       setAiLoading(true);
       setAiError(null);
       try {
+        // Get owner's business with business ID
         const bizRes = await API.get("/business");
-        const currentHour = new Date().getHours();
         
-        const queueCount = currentQueues.filter(q => q.status === 'waiting').length;
-        const completedQueues = currentQueues.filter(q => q.status === 'completed').length;
-        const avgWait = 5; // Replace with actual avg wait logic if available
+        if (!bizRes.data || bizRes.data.length === 0) {
+          setPrediction("Business not found. Please set up your business profile.");
+          return;
+        }
         
+        const businessId = bizRes.data[0]._id;
+        
+        // Send only businessId to backend - backend will fetch all real data
         const res = await API.post("/ai/predict", {
-          businessName: bizRes.data.length > 0 ? bizRes.data[0].name : "Your Business",
-          queueCount: queueCount,
-          avgWait: avgWait,
-          completedQueues: completedQueues,
-          time: `${currentHour}:00`
+          businessId: businessId
         });
 
         if (res.data.success) {
@@ -77,9 +77,10 @@ function OwnerDashboard() {
           setPrediction("AI temporarily unavailable.");
         }
       } catch (error) {
-        console.log(error);
+        console.error("AI Insights Error:", error);
+        // Fallback message
         setPrediction(
-          "Rush expected between 5PM - 8PM. Best visiting time: Morning hours."
+          "Queue data is currently limited. Try visiting during non-peak hours."
         );
       } finally {
         setAiLoading(false);

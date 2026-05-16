@@ -84,14 +84,14 @@ function CustomerDashboard() {
     setAiError(null);
     try {
       const res = await API.post("/ai/predict", {
-        businessName: business?.name || "Your Business",
+        businessId: business._id,
       });
 
-      if (res.data.success) {
-        setPrediction(res.data.prediction);
-      } else {
-        setPrediction("AI temporarily unavailable.");
+      let responseText = res.data.prediction;
+      if (responseText.length > 250) {
+        responseText = responseText.slice(0, 250) + "...";
       }
+      setPrediction(responseText);
     } catch (error) {
       console.log(error.response?.data || error.message);
       setPrediction(

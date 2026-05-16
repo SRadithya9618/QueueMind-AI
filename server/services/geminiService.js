@@ -1,41 +1,32 @@
-const {
-  GoogleGenerativeAI,
-} = require("@google/generative-ai");
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
-const genAI = new GoogleGenerativeAI(
-  process.env.GEMINI_API_KEY
-);
+const generateBusinessInsights = async (businessData) => {
+  const {
+    businessName,
+    businessType,
+    currentQueueCount,
+    completedQueueCount,
+    averageWaitTime,
+    currentTime,
+  } = businessData;
 
-const model = genAI.getGenerativeModel({
-  model: "gemini-2.5-flash",
-});
+  const dynamicPrompt = `You are an AI queue analyst.
 
-const generateQueuePrediction = async (
-  businessName,
-  queueCount,
-  averageServiceTime
-) => {
-  const prompt = `
-You are an AI queue prediction assistant.
+BUSINESS DATA:
+- Business Name: ${businessName}
+- Business Type: ${businessType}
+- Current Queue Count: ${currentQueueCount}
+- Completed Services Today: ${completedQueueCount}
+- Average Wait Time: ${averageWaitTime} minutes
+- Current Time: ${currentTime}
 
-Business Name: ${businessName}
-Current Queue Count: ${queueCount}
-Average Service Time: ${averageServiceTime} minutes
+ANALYSIS REQUIRED:
+Give a concise dashboard response in 2–4 short lines only. No markdown, no headings, no bullet points. Keep it under 250 characters.`;
 
-Analyze:
-1. Current crowd level
-2. Estimated waiting difficulty
-3. Best visiting time suggestion
-4. Queue management insights
-
-Keep response short and professional.
-`;
-
-  const result = await model.generateContent(prompt);
-
+  const result = await model.generateContent(dynamicPrompt);
   return result.response.text();
 };
 
-module.exports = {
-  generateQueuePrediction,
-};
+module.exports = { generateBusinessInsights };
