@@ -153,19 +153,27 @@ function CustomerDashboard() {
 
       <div
         className={`
-          absolute
+          fixed
           md:relative
+          inset-y-0
+          left-0
           z-50
           w-[280px]
-          h-full
+          h-screen
+          md:h-full
           bg-[#0B1120]
           border-r
           border-[#1A2234]
           flex
           flex-col
-          justify-between
+          justify-start
+          md:justify-between
+          gap-8
+          md:gap-0
           px-6
           py-8
+          overflow-y-auto
+          md:overflow-y-visible
           transition-transform
           duration-300
           ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}
@@ -191,7 +199,8 @@ function CustomerDashboard() {
               flex
               items-center
               gap-3
-              mb-14
+              mb-8
+              md:mb-14
               cursor-pointer
               group
             "
@@ -250,7 +259,8 @@ function CustomerDashboard() {
             className="
               flex
               flex-col
-              gap-3
+              gap-2
+              md:gap-3
             "
           >
 
@@ -299,28 +309,6 @@ function CustomerDashboard() {
             >
               <FiActivity />
               My Queues
-            </button>
-
-            <button
-              onClick={() => navigate("/nearby-businesses")}
-              className="
-                text-gray-400
-                hover:bg-[#111827]
-                hover:text-white
-                rounded-2xl
-                px-5
-                py-4
-                text-left
-                transition
-                cursor-pointer
-                flex
-                items-center
-                gap-3
-                hover:scale-105
-              "
-            >
-              <FiMapPin />
-              Nearby Businesses
             </button>
 
             <button
@@ -373,7 +361,7 @@ function CustomerDashboard() {
 
         {/* PROFILE */}
 
-        <div>
+        <div className="mt-2 md:mt-0 shrink-0">
           <div
             className="
               bg-[#0d1730]/60
@@ -385,6 +373,7 @@ function CustomerDashboard() {
               flex
               items-center
               gap-4
+              min-w-0
             "
           >
 
@@ -401,17 +390,19 @@ function CustomerDashboard() {
                 justify-center
                 text-white
                 text-xl
+                shrink-0
               "
             >
               <FiUser />
             </div>
 
-            <div>
+            <div className="min-w-0">
 
               <h2
                 className="
                   text-white
                   font-semibold
+                  truncate
                 "
               >
                 {user?.name || "Customer"}
@@ -421,6 +412,7 @@ function CustomerDashboard() {
                 className="
                   text-gray-400
                   text-sm
+                  truncate
                 "
               >
                 {user?.role || "Queue Participant"}
@@ -442,11 +434,11 @@ function CustomerDashboard() {
       </div>
 
       {/* MAIN CONTENT AREA */}
-      <div className="flex-1 overflow-y-auto px-6 md:px-10 py-8 custom-scrollbar">
+      <div className="flex-1 min-w-0 overflow-y-auto px-4 sm:px-6 md:px-10 py-8 custom-scrollbar">
         {/* HEADER */}
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-10">
             {/* LEFT */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-start sm:items-center gap-4 min-w-0">
               <button
                 className="md:hidden text-white cursor-pointer"
                 onClick={() => setIsSidebarOpen(true)}
@@ -454,16 +446,16 @@ function CustomerDashboard() {
                 ☰
               </button>
               <div>
-                <h1 className="text-white text-4xl font-bold mb-2">
+                <h1 className="text-white text-3xl sm:text-4xl font-bold mb-2 break-words">
                   Customer Dashboard
                 </h1>
-                <p className="text-gray-400 text-lg">
+                <p className="text-gray-400 text-base sm:text-lg">
                   Manage your queues smarter with AI.
                 </p>
               </div>
             </div>
             {/* RIGHT */}
-            <div className="flex items-center gap-4 w-full lg:w-auto">
+            <div className="flex items-center gap-4 w-full lg:w-auto min-w-0">
               <div className="relative w-full lg:w-[350px]">
                 <input
                   type="text"
@@ -492,7 +484,7 @@ function CustomerDashboard() {
           {/* STATS */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
             {/* CARD */}
-            <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-7 transition-all duration-300 hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] group">
+            <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-6 sm:p-7 w-full h-full transition-all duration-300 hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] group">
               <div className="flex justify-between items-start mb-4">
                 <p className="text-gray-400 group-hover:text-blue-400 transition-colors">
                   Active Queues
@@ -501,7 +493,7 @@ function CustomerDashboard() {
                   <FiActivity size={20} />
                 </div>
               </div>
-              <h1 className="text-white text-5xl font-bold">
+              <h1 className="text-white text-3xl sm:text-4xl lg:text-5xl font-bold break-words">
                 {
                   history.filter(
                     q => q.status === "waiting" || q.status === "called"
@@ -509,7 +501,7 @@ function CustomerDashboard() {
                 }
               </h1>
             </div>
-            <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-7 transition-all duration-300 hover:border-purple-500/50 hover:shadow-[0_0_30px_rgba(168,85,247,0.1)] group">
+            <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-6 sm:p-7 w-full h-full transition-all duration-300 hover:border-purple-500/50 hover:shadow-[0_0_30px_rgba(168,85,247,0.1)] group">
               <div className="flex justify-between items-start mb-4">
                 <p className="text-gray-400 group-hover:text-purple-400 transition-colors">
                   Average Wait
@@ -518,7 +510,7 @@ function CustomerDashboard() {
                   <FiClock size={20} />
                 </div>
               </div>
-              <h1 className="text-white text-5xl font-bold">
+              <h1 className="text-white text-3xl sm:text-4xl lg:text-5xl font-bold break-words">
                 {
                   history.length > 0
                     ? "15m"
@@ -526,7 +518,7 @@ function CustomerDashboard() {
                 }
               </h1>
             </div>
-            <div className="bg-gradient-to-r from-blue-500 to-purple-500 rounded-3xl p-7 transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_10px_40px_rgba(59,130,246,0.3)] group">
+            <div className="bg-gradient-to-r from-blue-500 to-purple-500 rounded-3xl p-6 sm:p-7 w-full h-full transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_10px_40px_rgba(59,130,246,0.3)] group">
               <div className="flex justify-between items-start mb-4">
                 <p className="text-white/80">
                   AI Efficiency
@@ -535,7 +527,7 @@ function CustomerDashboard() {
                   <FiTrendingUp size={20} />
                 </div>
               </div>
-              <h1 className="text-white text-5xl font-bold">
+              <h1 className="text-white text-3xl sm:text-4xl lg:text-5xl font-bold break-words">
                 94%
               </h1>
             </div>
@@ -549,9 +541,9 @@ function CustomerDashboard() {
           />
 
           {!prediction && !aiLoading && (
-            <div className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-xl border border-white/10 rounded-[32px] p-10 mb-10">
-              <h1 className="text-white text-4xl font-bold mb-5">AI Queue Insights</h1>
-              <p className="text-white/80 text-xl leading-relaxed">
+            <div className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-xl border border-white/10 rounded-[32px] p-6 sm:p-10 mb-10">
+              <h1 className="text-white text-3xl sm:text-4xl font-bold mb-5 break-words">AI Queue Insights</h1>
+              <p className="text-white/80 text-lg sm:text-xl leading-relaxed break-words">
                 Select a business below to get real-time AI-powered queue predictions and visiting recommendations.
               </p>
             </div>
@@ -583,10 +575,10 @@ function CustomerDashboard() {
               .filter((b) => b?.name?.toLowerCase()?.includes(search.toLowerCase()))
               .filter((b) => categoryFilter === 'All' || b?.type?.toLowerCase() === categoryFilter.toLowerCase())
               .map((business) => (
-                <div key={business._id} className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-7 transition-all duration-300 hover:border-blue-500/30 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] group">
-                  <div className="flex items-center justify-between mb-5">
-                    <div>
-                      <h2 className="text-white text-2xl font-bold mb-2 group-hover:text-blue-400 transition-colors">{business.name}</h2>
+                <div key={business._id} className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-6 sm:p-7 transition-all duration-300 hover:border-blue-500/30 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] group">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
+                    <div className="min-w-0">
+                      <h2 className="text-white text-xl sm:text-2xl font-bold mb-2 group-hover:text-blue-400 transition-colors break-words">{business.name}</h2>
                       <p className="text-gray-400 flex items-center gap-2 capitalize">
                         <FiMapPin className="text-blue-500" />
                         {business.type}
@@ -595,11 +587,11 @@ function CustomerDashboard() {
                     <div className="bg-green-500/20 text-green-400 px-4 py-2 rounded-full text-sm font-medium border border-green-500/20">Open</div>
                   </div>
                   <p className="text-gray-300 mb-6 leading-relaxed line-clamp-2">{business.description || `${business.name} is a top-rated ${business.type || 'business'} in your area.`}</p>
-                  <div className="flex gap-4">
-                    <button onClick={() => handleBookToken(business._id)} className="flex-1 py-4 rounded-2xl text-white font-semibold bg-gradient-to-r from-blue-500 to-purple-500 hover:shadow-[0_10px_20px_rgba(59,130,246,0.2)] transition-all cursor-pointer hover:scale-[1.02]">
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <button onClick={() => handleBookToken(business._id)} className="w-full sm:flex-1 py-4 rounded-2xl text-white font-semibold bg-gradient-to-r from-blue-500 to-purple-500 hover:shadow-[0_10px_20px_rgba(59,130,246,0.2)] transition-all cursor-pointer hover:scale-[1.02]">
                       Book Token
                     </button>
-                    <button onClick={() => fetchAIInsights(business)} className="px-6 py-4 rounded-2xl text-white font-semibold bg-[#111827]/50 border border-white/10 hover:bg-white/10 transition-all cursor-pointer flex items-center gap-2">
+                    <button onClick={() => fetchAIInsights(business)} className="w-full sm:w-auto px-6 py-4 rounded-2xl text-white font-semibold bg-[#111827]/50 border border-white/10 hover:bg-white/10 transition-all cursor-pointer flex items-center justify-center gap-2">
                       <FiCpu />
                       AI Insight
                     </button>

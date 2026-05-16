@@ -46,6 +46,9 @@ function Register() {
       className="
         min-h-screen
         flex
+        flex-col
+        lg:flex-row
+        overflow-x-hidden
         bg-black
       "
     >
@@ -54,13 +57,18 @@ function Register() {
 
       <div
         className="
-          w-1/2
+          w-full
+          lg:w-1/2
           bg-[#050816]
           flex
           flex-col
           justify-start
           pt-12
-          px-24
+          px-6
+          sm:px-10
+          lg:px-24
+          pb-10
+          lg:pb-0
         "
       >
 
@@ -135,7 +143,8 @@ function Register() {
             border
             border-[#1A2234]
             rounded-[30px]
-            px-8
+            px-6
+            sm:px-8
             py-3
             shadow-2xl
           "
@@ -145,7 +154,8 @@ function Register() {
 
           <h5
             className="
-              text-[30px]
+              text-2xl
+              sm:text-[30px]
               leading-tight
               font-bold
               text-white
@@ -468,7 +478,8 @@ function Register() {
 
       <div
         className="
-          w-1/2
+          w-full
+          lg:w-1/2
           bg-gradient-to-br
           from-blue-600
           via-blue-500
@@ -476,7 +487,11 @@ function Register() {
           flex
           items-center
           justify-center
-          px-16
+          px-6
+          sm:px-10
+          lg:px-16
+          py-12
+          lg:py-0
         "
       >
 
@@ -503,11 +518,14 @@ function Register() {
 
           <h1
             className="
-              text-[40px]
+              text-3xl
+              sm:text-4xl
+              lg:text-[40px]
               font-bold
               text-white
               leading-[1.1]
               mb-10
+              break-words
             "
           >
             Smarter queues for hospitals,

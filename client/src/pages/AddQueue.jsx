@@ -56,6 +56,8 @@ function AddQueue() {
         items-center
         justify-center
         px-6
+        py-10
+        overflow-x-hidden
       "
     >
 
@@ -67,13 +69,15 @@ function AddQueue() {
           border
           border-[#1A2234]
           rounded-[30px]
-          p-10
+          p-6
+          sm:p-10
         "
       >
 
         <h1
           className="
-            text-4xl
+            text-3xl
+            sm:text-4xl
             font-bold
             text-white
             mb-8

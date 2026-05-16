@@ -168,7 +168,7 @@ function Analytics() {
       </div>
 
       {/* MAIN CONTENT */}
-      <div className="flex-1 overflow-y-auto px-6 md:px-10 py-8">
+      <div className="flex-1 min-w-0 overflow-y-auto px-4 sm:px-6 md:px-10 py-8">
         {/* TOPBAR */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
           <div className="flex items-center gap-4">
@@ -192,7 +192,7 @@ function Analytics() {
             { label: 'Cancelled', value: '3', trend: '-2%', icon: <FiXCircle /> },
             { label: 'Avg Wait Time', value: '14m', trend: '-3m', icon: <FiClock /> },
           ].map((stat, i) => (
-            <div key={i} className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-7 transition hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] group">
+            <div key={i} className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-6 sm:p-7 w-full h-full transition hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] group">
               <div className="flex justify-between items-start mb-3">
                 <p className="text-gray-400 group-hover:text-blue-400 transition-colors">{stat.label}</p>
                 <div className="p-2 bg-blue-500/10 rounded-lg text-blue-400 group-hover:scale-110 transition-transform">
@@ -200,7 +200,7 @@ function Analytics() {
                 </div>
               </div>
               <div className="flex items-end justify-between">
-                <h1 className="text-white text-5xl font-bold">{stat.value}</h1>
+                <h1 className="text-white text-3xl sm:text-4xl lg:text-5xl font-bold break-words">{stat.value}</h1>
                 <span className={`text-sm font-medium ${stat.trend.startsWith('+') ? 'text-green-400' : 'text-red-400'}`}>
                   {stat.trend}
                 </span>
@@ -212,8 +212,8 @@ function Analytics() {
         {/* CHARTS GRID */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
           {/* BAR CHART */}
-          <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-[32px] p-8 hover:border-blue-500/30 transition-all">
-            <h2 className="text-white text-2xl font-bold mb-6 flex items-center gap-3">
+          <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-[32px] p-6 sm:p-8 hover:border-blue-500/30 transition-all">
+            <h2 className="text-white text-xl sm:text-2xl font-bold mb-6 flex items-center gap-3">
               <FiBarChart2 className="text-blue-500" />
               Weekly Bookings
             </h2>
@@ -240,8 +240,8 @@ function Analytics() {
           </div>
 
           {/* LINE CHART */}
-          <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-[32px] p-8 hover:border-blue-500/30 transition-all">
-            <h2 className="text-white text-2xl font-bold mb-6 flex items-center gap-3">
+          <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-[32px] p-6 sm:p-8 hover:border-blue-500/30 transition-all">
+            <h2 className="text-white text-xl sm:text-2xl font-bold mb-6 flex items-center gap-3">
               <FiClock className="text-purple-500" />
               Wait Time Trends
             </h2>
@@ -262,8 +262,8 @@ function Analytics() {
           </div>
 
           {/* PIE CHART */}
-          <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-[32px] p-8 hover:border-blue-500/30 transition-all">
-            <h2 className="text-white text-2xl font-bold mb-6 flex items-center gap-3">
+          <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-[32px] p-6 sm:p-8 hover:border-blue-500/30 transition-all">
+            <h2 className="text-white text-xl sm:text-2xl font-bold mb-6 flex items-center gap-3">
               <FiCheckCircle className="text-green-500" />
               Queue Efficiency
             </h2>
@@ -293,28 +293,28 @@ function Analytics() {
           </div>
 
           {/* AI INSIGHTS CARD */}
-          <div className="bg-gradient-to-br from-blue-600/20 to-purple-600/20 backdrop-blur-xl border border-white/10 rounded-[32px] p-8 flex flex-col justify-center">
-            <div className="flex items-center gap-3 mb-6">
+          <div className="bg-gradient-to-br from-blue-600/20 to-purple-600/20 backdrop-blur-xl border border-white/10 rounded-[32px] p-6 sm:p-8 flex flex-col justify-center">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-white shadow-[0_0_20px_rgba(59,130,246,0.5)]">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <h2 className="text-white text-3xl font-bold">AI Analytics Insight</h2>
+              <h2 className="text-white text-2xl sm:text-3xl font-bold break-words">AI Analytics Insight</h2>
             </div>
             
             <div className="space-y-6">
-              <div className="flex justify-between items-center bg-white/5 p-4 rounded-2xl border border-white/5">
-                <span className="text-gray-400 text-lg">Peak Rush Hour</span>
-                <span className="text-white font-bold text-xl">5:00 PM - 7:00 PM</span>
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 bg-white/5 p-4 rounded-2xl border border-white/5">
+                <span className="text-gray-400 text-base sm:text-lg">Peak Rush Hour</span>
+                <span className="text-white font-bold text-lg sm:text-xl break-words">5:00 PM - 7:00 PM</span>
               </div>
-              <div className="flex justify-between items-center bg-white/5 p-4 rounded-2xl border border-white/5">
-                <span className="text-gray-400 text-lg">Efficiency Score</span>
-                <span className="text-green-400 font-bold text-xl">94%</span>
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 bg-white/5 p-4 rounded-2xl border border-white/5">
+                <span className="text-gray-400 text-base sm:text-lg">Efficiency Score</span>
+                <span className="text-green-400 font-bold text-lg sm:text-xl break-words">94%</span>
               </div>
-              <div className="flex justify-between items-center bg-white/5 p-4 rounded-2xl border border-white/5">
-                <span className="text-gray-400 text-lg">Rec. Staffing</span>
-                <span className="text-blue-400 font-bold text-xl">3 Counters</span>
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 bg-white/5 p-4 rounded-2xl border border-white/5">
+                <span className="text-gray-400 text-base sm:text-lg">Rec. Staffing</span>
+                <span className="text-blue-400 font-bold text-lg sm:text-xl break-words">3 Counters</span>
               </div>
             </div>
 

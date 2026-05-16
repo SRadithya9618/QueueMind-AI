@@ -216,7 +216,7 @@ function LiveQueue() {
       </div>
 
       {/* MAIN CONTENT */}
-      <div className="flex-1 overflow-y-auto px-6 md:px-10 py-8">
+      <div className="flex-1 min-w-0 overflow-y-auto px-4 sm:px-6 md:px-10 py-8">
         {/* TOPBAR */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
           <div className="flex items-center gap-4">
@@ -236,9 +236,9 @@ function LiveQueue() {
               <p className="text-gray-400 text-lg">Manage realtime customer flow and queue operations.</p>
             </div>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 w-full md:w-auto">
             <NotificationBell />
-            <button onClick={() => navigate("/owner/add-queue")} className="bg-gradient-to-r from-blue-500 to-purple-500 px-6 py-4 rounded-2xl text-white font-semibold cursor-pointer">
+            <button onClick={() => navigate("/owner/add-queue")} className="bg-gradient-to-r from-blue-500 to-purple-500 px-6 py-4 rounded-2xl text-white font-semibold cursor-pointer w-full sm:w-auto">
               + Add Queue
             </button>
           </div>
@@ -252,12 +252,12 @@ function LiveQueue() {
             { label: 'Avg Wait Time', value: `${stats.avgWait}m`, trend: 'AI Est.' },
             { label: 'Cancelled', value: stats.cancelled, trend: 'Recent' },
           ].map((stat, i) => (
-            <div key={i} className="bg-[#0B1120] border border-[#1A2234] rounded-3xl p-7 transition-all duration-300 hover:border-blue-500/50 group">
+            <div key={i} className="bg-[#0B1120] border border-[#1A2234] rounded-3xl p-6 sm:p-7 w-full h-full transition-all duration-300 hover:border-blue-500/50 group">
               <div className="flex justify-between items-start mb-3">
                 <p className="text-gray-400">{stat.label}</p>
                 <span className="text-[10px] text-blue-400 font-bold uppercase tracking-wider">{stat.trend}</span>
               </div>
-              <h1 className="text-white text-5xl font-bold group-hover:scale-105 transition-transform duration-300">{stat.value}</h1>
+              <h1 className="text-white text-3xl sm:text-4xl lg:text-5xl font-bold break-words group-hover:scale-105 transition-transform duration-300">{stat.value}</h1>
             </div>
           ))}
         </div>

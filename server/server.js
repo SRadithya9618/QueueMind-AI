@@ -21,21 +21,48 @@ connectDB();
 
 const app = express();
 const server = http.createServer(app);
+
+const allowedOrigins = [
+  "https://queue-mind-ai.vercel.app",
+];
+
+const isAllowedOrigin = (origin) => {
+  if (!origin) return true;
+
+  return (
+    allowedOrigins.includes(origin) ||
+    /^http:\/\/localhost:\d+$/.test(origin) ||
+    /^http:\/\/127\.0\.0\.1:\d+$/.test(origin)
+  );
+};
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (isAllowedOrigin(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+};
+
 const io = new Server(server, {
   cors: {
-    origin: "*",
+    origin: (origin, callback) => {
+      if (isAllowedOrigin(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
   },
 });
 
 // Middleware
-app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "https://queue-mind-ai.vercel.app"
-  ],
-  credentials: true,
-}));
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(morgan("dev"));
 

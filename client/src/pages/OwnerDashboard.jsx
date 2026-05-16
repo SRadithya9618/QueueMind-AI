@@ -428,14 +428,15 @@ function OwnerDashboard() {
         className="
           flex-1
           overflow-y-auto
-          px-6
+          px-4
+          sm:px-6
           md:px-10
           py-8
         "
       >
 
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
-            <div className="flex items-center gap-4">
+            <div className="flex items-start sm:items-center gap-4 min-w-0">
               <button 
                 className="md:hidden text-white"
                 onClick={() => setIsSidebarOpen(true)}
@@ -450,7 +451,7 @@ function OwnerDashboard() {
               </div>
             </div>
             
-            <div className="flex items-center gap-4">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 w-full md:w-auto">
               <NotificationBell />
               <button
                 onClick={() => navigate("/owner/add-queue")}
@@ -464,6 +465,8 @@ function OwnerDashboard() {
                   text-white
                   font-semibold
                   cursor-pointer
+                  w-full
+                  sm:w-auto
                 "
               >
                 + Add Queue
@@ -484,50 +487,50 @@ function OwnerDashboard() {
           "
         >
 
-          <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-6 flex items-center gap-4">
+          <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-6 flex items-center gap-4 w-full h-full">
             <div className="p-3 bg-green-500/20 rounded-xl text-green-400 text-2xl">
               <FaCheck />
             </div>
             <div>
               <p className="text-gray-400 text-sm">Completed</p>
-              <h3 className="text-white text-2xl font-bold">24</h3>
+              <h3 className="text-white text-xl sm:text-2xl font-bold break-words">24</h3>
             </div>
           </div>
 
-          <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-6 flex items-center gap-4">
+          <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-6 flex items-center gap-4 w-full h-full">
             <div className="p-3 bg-blue-500/20 rounded-xl text-blue-400 text-2xl">
               <FaUsers />
             </div>
             <div>
               <p className="text-gray-400 text-sm">Active Queue</p>
-              <h3 className="text-white text-2xl font-bold">{queues.filter(q => q.status === 'waiting').length}</h3>
+              <h3 className="text-white text-xl sm:text-2xl font-bold break-words">{queues.filter(q => q.status === 'waiting').length}</h3>
             </div>
           </div>
 
-          <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-6 flex items-center gap-4">
+          <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-6 flex items-center gap-4 w-full h-full">
             <div className="p-3 bg-yellow-500/20 rounded-xl text-yellow-400 text-2xl">
               <FaClock />
             </div>
             <div>
               <p className="text-gray-400 text-sm">Wait Time</p>
-              <h3 className="text-white text-2xl font-bold">~5 min</h3>
+              <h3 className="text-white text-xl sm:text-2xl font-bold break-words">~5 min</h3>
             </div>
           </div>
 
-          <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-6 flex items-center gap-4">
+          <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-6 flex items-center gap-4 w-full h-full">
             <div className="p-3 bg-red-500/20 rounded-xl text-red-400 text-2xl">
               <FaTimes />
             </div>
             <div>
               <p className="text-gray-400 text-sm">Cancelled</p>
-              <h3 className="text-white text-2xl font-bold">3</h3>
+              <h3 className="text-white text-xl sm:text-2xl font-bold break-words">3</h3>
             </div>
           </div>
 
         </div>
 
         {/* AI INSIGHTS */}
-        <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-8 mb-10 bg-gradient-to-r from-blue-600/10 to-purple-600/10">
+        <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-6 sm:p-8 mb-10 bg-gradient-to-r from-blue-600/10 to-purple-600/10">
           <h3 className="text-white text-xl font-bold mb-4 flex items-center gap-2">
             <FiTrendingUp className="text-blue-400" />
             AI Predictions
@@ -573,8 +576,8 @@ function OwnerDashboard() {
             </div>
           </div>
 
-          <div className="lg:col-span-2 bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-xl border border-white/10 rounded-3xl p-8 flex flex-col justify-center">
-            <h3 className="text-white text-2xl font-bold mb-2">Queue Mind Optimization</h3>
+          <div className="lg:col-span-2 bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-8 flex flex-col justify-center">
+            <h3 className="text-white text-xl sm:text-2xl font-bold mb-2 break-words">Queue Mind Optimization</h3>
             <p className="text-gray-300">
               Your queue is currently operating at <span className="text-green-400 font-bold">85% efficiency</span>. 
               {queues.filter(q => q.status === 'waiting').length > 5 ? " Consider opening another counter to reduce wait times." : " Flow is optimal for current staffing."}
@@ -590,20 +593,21 @@ function OwnerDashboard() {
             border
             border-[#1d2942]
             rounded-[32px]
-            p-8
+            p-6
+            sm:p-8
             mb-10
             shadow-2xl
           "
         >
-          <div className="flex items-center gap-3 mb-8">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-8">
             <div className="p-2 bg-blue-500/20 rounded-xl text-blue-400">
               <FiActivity size={24} />
             </div>
-            <h3 className="text-white text-2xl font-bold">Queue Management</h3>
+            <h3 className="text-white text-xl sm:text-2xl font-bold break-words">Queue Management</h3>
           </div>
 
           <div className="overflow-x-auto">
-            <table className="w-full">
+            <table className="w-full min-w-[760px]">
               <thead>
                 <tr className="border-b border-[#1d2942]">
                   <th className="text-left px-4 py-3 text-gray-400 font-semibold">Token</th>

@@ -18,6 +18,7 @@ import {
   import Customers from "../pages/Customers";
   import OwnerAnalytics from "../pages/OwnerAnalytics";
   import QueueHistory from "../pages/QueueHistory";
+  import CustomerNotifications from "../pages/CustomerNotifications";
   function AppRoutes() {
   
     return (
@@ -71,7 +72,7 @@ import {
           />
           <Route
             path="/notifications"
-            element={<ProtectedRoute><Placeholder title="Notifications" /></ProtectedRoute>}
+            element={<ProtectedRoute><CustomerNotifications /></ProtectedRoute>}
           />
           <Route
             path="/customer/queue-history"

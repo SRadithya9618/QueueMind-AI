@@ -97,9 +97,6 @@ function MyQueues() {
             <button onClick={() => navigate("/my-queues")} className="bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-2xl px-5 py-4 text-left font-medium cursor-pointer">
               My Queues
             </button>
-            <button onClick={() => navigate("/nearby-businesses")} className="text-gray-400 hover:bg-[#111827] hover:text-white rounded-2xl px-5 py-4 text-left transition cursor-pointer">
-              Nearby Businesses
-            </button>
             <button onClick={() => navigate("/ai-predictions")} className="text-gray-400 hover:bg-[#111827] hover:text-white rounded-2xl px-5 py-4 text-left transition cursor-pointer">
               AI Predictions
             </button>
@@ -160,7 +157,7 @@ function MyQueues() {
       </div>
 
       {/* MAIN CONTENT */}
-      <div className="flex-1 overflow-y-auto px-6 md:px-10 py-8">
+      <div className="flex-1 min-w-0 overflow-y-auto px-4 sm:px-6 md:px-10 py-8">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
           <div className="flex items-center gap-4">
             <button className="md:hidden text-white" onClick={() => setIsSidebarOpen(true)}>
@@ -191,7 +188,7 @@ function MyQueues() {
               </h2>
 
               {activeQueues.length === 0 ? (
-                <div className="bg-[#0B1120] border border-dashed border-[#1A2234] rounded-[32px] p-20 text-center">
+              <div className="bg-[#0B1120] border border-dashed border-[#1A2234] rounded-[32px] p-8 sm:p-12 lg:p-20 text-center">
                   <div className="w-20 h-20 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-6">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -211,34 +208,34 @@ function MyQueues() {
                     const progress = Math.max(0, 100 - (position * 5)); // Just a mock progress logic
 
                     return (
-                      <div key={q._id} className="bg-gradient-to-br from-[#0B1120] to-[#111827] border border-[#1A2234] rounded-[32px] p-8 relative overflow-hidden group hover:border-blue-500/50 transition-all duration-500">
+                      <div key={q._id} className="bg-gradient-to-br from-[#0B1120] to-[#111827] border border-[#1A2234] rounded-[32px] p-6 sm:p-8 relative overflow-hidden group hover:border-blue-500/50 transition-all duration-500">
                         {/* Status Glow */}
                         <div className={`absolute top-0 right-0 w-32 h-32 blur-[80px] opacity-20 ${q.status === 'called' ? 'bg-blue-500' : 'bg-yellow-500'}`}></div>
 
                         <div className="flex flex-col lg:flex-row justify-between gap-10">
                           <div className="flex-1">
-                            <div className="flex items-center gap-4 mb-4">
+                            <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-4">
                               <span className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest ${q.status === 'called' ? 'bg-blue-500 text-white' : 'bg-yellow-500/10 text-yellow-500 border border-yellow-500/20'}`}>
                                 {q.status}
                               </span>
                               <span className="text-gray-500 text-sm">Booked {new Date(q.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
                             </div>
                             
-                            <h2 className="text-white text-3xl font-bold mb-1">{q.business?.name}</h2>
-                            <p className="text-gray-400 text-lg mb-8">{q.business?.address || "Premium Service Center"}</p>
+                            <h2 className="text-white text-2xl sm:text-3xl font-bold mb-1 break-words">{q.business?.name}</h2>
+                            <p className="text-gray-400 text-base sm:text-lg mb-8 break-words">{q.business?.address || "Premium Service Center"}</p>
 
-                            <div className="grid grid-cols-3 gap-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                               <div className="bg-white/5 rounded-2xl p-4">
                                 <p className="text-gray-500 text-xs uppercase mb-1">Token</p>
-                                <p className="text-white text-2xl font-bold">#{q.tokenNumber}</p>
+                                <p className="text-white text-xl sm:text-2xl font-bold break-words">#{q.tokenNumber}</p>
                               </div>
                               <div className="bg-white/5 rounded-2xl p-4">
                                 <p className="text-gray-500 text-xs uppercase mb-1">Position</p>
-                                <p className="text-blue-400 text-2xl font-bold">{q.position}</p>
+                                <p className="text-blue-400 text-xl sm:text-2xl font-bold break-words">{q.position}</p>
                               </div>
                               <div className="bg-white/5 rounded-2xl p-4">
                                 <p className="text-gray-500 text-xs uppercase mb-1">Wait Time</p>
-                                <p className="text-purple-400 text-2xl font-bold">{q.estimatedWait}m</p>
+                                <p className="text-purple-400 text-xl sm:text-2xl font-bold break-words">{q.estimatedWait}m</p>
                               </div>
                             </div>
                           </div>
@@ -268,7 +265,7 @@ function MyQueues() {
 
             {/* AI INSIGHTS BAR */}
             {activeQueues.length > 0 && (
-              <div className="bg-gradient-to-r from-blue-600/10 to-purple-600/10 border border-blue-500/20 rounded-[32px] p-8 flex items-center gap-6">
+              <div className="bg-gradient-to-r from-blue-600/10 to-purple-600/10 border border-blue-500/20 rounded-[32px] p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center gap-6">
                 <div className="w-14 h-14 rounded-full bg-blue-500 flex items-center justify-center text-white shrink-0">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -285,7 +282,8 @@ function MyQueues() {
             <section>
               <h2 className="text-white text-2xl font-bold mb-6">Queue History</h2>
               <div className="bg-[#0B1120] border border-[#1A2234] rounded-[32px] overflow-hidden">
-                <table className="w-full text-left">
+                <div className="overflow-x-auto">
+                <table className="w-full min-w-[720px] text-left">
                   <thead>
                     <tr className="border-b border-[#1A2234] bg-white/5">
                       <th className="px-8 py-5 text-gray-400 font-medium">Business</th>
@@ -320,6 +318,7 @@ function MyQueues() {
                     )}
                   </tbody>
                 </table>
+                </div>
               </div>
             </section>
           </div>

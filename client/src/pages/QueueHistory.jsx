@@ -20,7 +20,7 @@ const QueueHistory = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#050816] text-white px-6 md:px-10 py-10">
+    <div className="min-h-screen bg-[#050816] text-white px-4 sm:px-6 md:px-10 py-10 overflow-x-hidden">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center gap-4 mb-10">
           <button 
@@ -31,10 +31,10 @@ const QueueHistory = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
           </button>
-          <h1 className="text-4xl md:text-5xl font-bold">Queue History</h1>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold break-words">Queue History</h1>
         </div>
 
-        <div className="bg-[#0B1120] border border-[#1A2234] rounded-[32px] p-8 md:p-12 backdrop-blur-xl">
+        <div className="bg-[#0B1120] border border-[#1A2234] rounded-[32px] p-6 sm:p-8 md:p-12 backdrop-blur-xl">
           {loading ? (
             <div className="flex justify-center py-10">
               <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>

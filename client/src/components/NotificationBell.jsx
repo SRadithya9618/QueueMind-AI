@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import API from "../api/axios";
 import socket from "../socket";
 import toast from "react-hot-toast";
 
 const NotificationBell = () => {
+  const navigate = useNavigate();
   const [notifications, setNotifications] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -73,7 +75,7 @@ const NotificationBell = () => {
 
       {/* DROPDOWN */}
       {isOpen && (
-        <div className="absolute right-0 mt-4 w-80 md:w-96 bg-[#0B1120] border border-[#1A2234] rounded-[32px] shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden z-[100] backdrop-blur-xl">
+        <div className="absolute right-0 mt-4 w-[calc(100vw-2rem)] max-w-80 md:w-96 md:max-w-none bg-[#0B1120] border border-[#1A2234] rounded-[32px] shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden z-[100] backdrop-blur-xl">
           <div className="p-6 border-b border-[#1A2234] flex justify-between items-center bg-white/5">
             <h3 className="text-white font-bold text-xl">Notifications</h3>
             {unreadCount > 0 && (
@@ -113,7 +115,13 @@ const NotificationBell = () => {
           </div>
 
           <div className="p-4 text-center bg-white/5">
-            <button className="text-blue-400 text-sm font-semibold hover:text-blue-300 transition cursor-pointer">
+            <button
+              onClick={() => {
+                setIsOpen(false);
+                navigate("/notifications");
+              }}
+              className="text-blue-400 text-sm font-semibold hover:text-blue-300 transition cursor-pointer"
+            >
               View All Notifications
             </button>
           </div>

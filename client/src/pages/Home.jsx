@@ -236,10 +236,13 @@ function Home() {
 
         <h1
           className="
-            text-[60px]
-            leading-[70px]
+            text-4xl
+            md:text-6xl
+            lg:text-8xl
+            leading-tight
             font-bold
             max-w-[1100px]
+            break-words
           "
         >
 
@@ -283,9 +286,13 @@ function Home() {
         <div
           className="
             flex
+            flex-col
+            sm:flex-row
             items-center
             gap-6
             mt-12
+            w-full
+            sm:w-auto
           "
         >
 
@@ -297,11 +304,14 @@ function Home() {
                 bg-gradient-to-r
                 from-blue-500
                 to-purple-500
-                px-10
+                px-8
+                md:px-10
                 py-5
                 rounded-2xl
                 text-lg
                 font-semibold
+                w-full
+                sm:w-auto
                 hover:scale-105
                 transition-all
                 duration-300
@@ -320,11 +330,14 @@ function Home() {
                 border
                 border-[#2B315A]
                 bg-[#141933]
-                px-10
+                px-8
+                md:px-10
                 py-5
                 rounded-2xl
                 text-lg
                 font-semibold
+                w-full
+                sm:w-auto
                 hover:bg-[#1B2142]
                 transition-all
                 duration-300
@@ -343,7 +356,8 @@ function Home() {
 
       <section
         className="
-          px-10
+          px-6
+          md:px-10
           mt-14
         "
       >
@@ -363,8 +377,11 @@ function Home() {
           <div
             className="
               grid
-              grid-cols-3
-              gap-9
+              grid-cols-1
+              md:grid-cols-2
+              lg:grid-cols-4
+              gap-6
+              lg:gap-9
               mb-10
             "
           >
@@ -373,15 +390,20 @@ function Home() {
               className="
                 bg-[#050B18]
                 rounded-3xl
-                p-8
+                p-6
+                md:p-8
+                w-full
               "
             >
 
               <h1
                 className="
-                  text-6xl
+                  text-4xl
+                  md:text-5xl
+                  lg:text-6xl
                   font-bold
                   mb-3
+                  break-words
                 "
               >
                 1,284
@@ -402,15 +424,20 @@ function Home() {
               className="
                 bg-[#050B18]
                 rounded-3xl
-                p-8
+                p-6
+                md:p-8
+                w-full
               "
             >
 
               <h1
                 className="
-                  text-6xl
+                  text-4xl
+                  md:text-5xl
+                  lg:text-6xl
                   font-bold
                   mb-3
+                  break-words
                 "
               >
                 8m 32s
@@ -431,15 +458,20 @@ function Home() {
               className="
                 bg-[#050B18]
                 rounded-3xl
-                p-8
+                p-6
+                md:p-8
+                w-full
               "
             >
 
               <h1
                 className="
-                  text-6xl
+                  text-4xl
+                  md:text-5xl
+                  lg:text-6xl
                   font-bold
                   mb-3
+                  break-words
                 "
               >
                 94.2%
@@ -497,7 +529,8 @@ function Home() {
       <section
         id="features"
         className="
-          px-20
+          px-6
+          md:px-20
           py-10
         "
       >
@@ -517,22 +550,29 @@ function Home() {
 
         <h4
           className="
-            text-5xl
+            text-4xl
+            md:text-5xl
             font-bold
             text-center
-            mb-20
+            mb-12
+            md:mb-20
+            break-words
           "
         >
           Built for the modern queue
         </h4>
 
         <div
-          className="
-            grid
-            grid-cols-3
-            gap-1
-          "
-        >
+            className="
+              grid
+              grid-cols-1
+              md:grid-cols-2
+              lg:grid-cols-3
+              gap-6
+              lg:gap-1
+              [grid-auto-rows:1fr]
+            "
+          >
 
           {[
             "AI Predictions",
@@ -550,16 +590,22 @@ function Home() {
                 border
                 border-[#1F2937]
                 rounded-3xl
-                p-10
-                h-[200px]
+                p-6
+                md:p-10
+                min-h-[200px]
+                lg:h-[200px]
+                h-full
+                w-full
               "
             >
 
               <h1
                 className="
-                  text-3xl
+                  text-2xl
+                  md:text-3xl
                   font-bold
                   mb-6
+                  break-words
                 "
               >
                 {item}
@@ -568,8 +614,10 @@ function Home() {
               <p
                 className="
                   text-gray-400
-                  text-lg
+                  text-base
+                  md:text-lg
                   leading-relaxed
+                  break-words
                 "
               >
                 Powerful AI queue management
@@ -589,11 +637,15 @@ function Home() {
       <section
         id="ai-engine"
         className="
-          px-20
-          pb-32
+          px-6
+          md:px-20
+          pb-20
+          md:pb-32
           grid
-          grid-cols-2
-          gap-16
+          grid-cols-1
+          lg:grid-cols-2
+          gap-8
+          lg:gap-16
           items-center
         "
       >
@@ -615,10 +667,12 @@ function Home() {
 
           <h5
             className="
-              text-3xl
+              text-2xl
+              md:text-3xl
               font-bold
               leading-tight
               mb-5
+              break-words
             "
           >
             Predict crowds before they form
@@ -627,9 +681,11 @@ function Home() {
           <p
             className="
               text-gray-300
-              text-xl
+              text-lg
+              md:text-xl
               leading-relaxed
               mb-5
+              break-words
             "
           >
             Our prediction engine analyzes
@@ -642,7 +698,8 @@ function Home() {
               flex
               flex-col
               gap-3
-              text-xl
+              text-lg
+              md:text-xl
             "
           >
 
@@ -663,7 +720,9 @@ function Home() {
             border
             border-[#1A2234]
             rounded-[40px]
-            p-10
+            p-6
+            md:p-10
+            w-full
           "
         >
 
@@ -703,10 +762,12 @@ function Home() {
 
             <p
               className="
-                text-gray-400
-                text-lg
-              "
-            >
+              text-gray-400
+              text-base
+              md:text-lg
+              break-words
+            "
+          >
               Expected 38% surge at 1 PM.
               Recommend opening counter #4.
             </p>
@@ -722,7 +783,8 @@ function Home() {
       <section
         id="industries"
         className="
-          px-20
+          px-6
+          md:px-20
           pb-20
         "
       >
@@ -753,8 +815,11 @@ function Home() {
         <div
           className="
             grid
-            grid-cols-4
-            gap-3
+            grid-cols-1
+            sm:grid-cols-2
+            lg:grid-cols-4
+            gap-6
+            lg:gap-3
           "
         >
 
@@ -772,12 +837,15 @@ function Home() {
                 border
                 border-[#1F2937]
                 rounded-3xl
-                h-[180px]
+                min-h-[140px]
+                lg:h-[180px]
                 flex
                 items-center
                 justify-center
-                text-3xl
+                text-2xl
+                md:text-3xl
                 font-bold
+                text-center
               "
             >
               {item}
@@ -794,8 +862,10 @@ function Home() {
       <section
         id="pricing"
         className="
-          px-20
-          pb-32
+          px-6
+          md:px-20
+          pb-20
+          md:pb-32
         "
       >
 
@@ -805,16 +875,22 @@ function Home() {
             from-blue-500
             to-pink-300
             rounded-[50px]
-            py-16
+            py-12
+            md:py-16
+            px-6
+            md:px-0
             text-center
           "
         >
 
           <h1
             className="
-              text-5xl
+              text-3xl
+              sm:text-4xl
+              lg:text-5xl
               font-bold
               mb-8
+              break-words
             "
           >
             Ready to ship smarter queues?
@@ -822,8 +898,10 @@ function Home() {
 
           <p
             className="
-              text-2xl
+              text-lg
+              md:text-2xl
               mb-12
+              break-words
             "
           >
             Join hundreds of businesses using QueueMind AI.
@@ -832,47 +910,63 @@ function Home() {
           <div
             className="
               flex
+              flex-col
+              sm:flex-row
               justify-center
               gap-6
             "
           >
 
-            <button
-              className="
-                cursor-pointer
-                bg-white
-                text-black
-                px-10
-                py-5
-                rounded-2xl
-                text-xl
-                font-semibold
-                hover:scale-105
-                transition-all
-                duration-300
-              "
-            >
-              Start free trial
-            </button>
+            <Link to="/register" className="w-full sm:w-auto">
 
-            <button
-              className="
-                cursor-pointer
-                border
-                border-white
-                px-10
-                py-5
-                rounded-2xl
-                text-xl
-                font-semibold
-                hover:bg-white
-                hover:text-black
-                transition-all
-                duration-300
-              "
-            >
-              Owner demo
-            </button>
+              <button
+                className="
+                  cursor-pointer
+                  bg-white
+                  text-black
+                  px-8
+                  md:px-10
+                  py-5
+                  rounded-2xl
+                  text-lg
+                  md:text-xl
+                  font-semibold
+                  w-full
+                  hover:scale-105
+                  transition-all
+                  duration-300
+                "
+              >
+                Start free trial
+              </button>
+
+            </Link>
+
+            <Link to="/login" className="w-full sm:w-auto">
+
+              <button
+                className="
+                  cursor-pointer
+                  border
+                  border-white
+                  px-8
+                  md:px-10
+                  py-5
+                  rounded-2xl
+                  text-lg
+                  md:text-xl
+                  font-semibold
+                  w-full
+                  hover:bg-white
+                  hover:text-black
+                  transition-all
+                  duration-300
+                "
+              >
+                Owner demo
+              </button>
+
+            </Link>
 
           </div>
 

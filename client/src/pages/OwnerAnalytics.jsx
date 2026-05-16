@@ -218,7 +218,7 @@ function OwnerAnalytics() {
       </div>
 
       {/* MAIN CONTENT */}
-      <div className="flex-1 overflow-y-auto px-4 md:px-10 py-8">
+      <div className="flex-1 min-w-0 overflow-y-auto px-4 sm:px-6 md:px-10 py-8">
         {/* HEADER */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
           <div className="flex items-center gap-4">
@@ -254,49 +254,49 @@ function OwnerAnalytics() {
 
         {/* STATS CARDS */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-          <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-6 flex items-center gap-4">
+          <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-6 flex items-center gap-4 w-full h-full">
             <div className="p-3 bg-blue-500/20 rounded-xl text-blue-400 text-2xl">
               <FiActivity />
             </div>
             <div>
               <p className="text-gray-400 text-sm">Total Queues</p>
-              <h3 className="text-white text-2xl font-bold">
+              <h3 className="text-white text-xl sm:text-2xl font-bold break-words">
                 {queueStats.totalQueues}
               </h3>
             </div>
           </div>
 
-          <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-6 flex items-center gap-4">
+          <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-6 flex items-center gap-4 w-full h-full">
             <div className="p-3 bg-green-500/20 rounded-xl text-green-400 text-2xl">
               ✓
             </div>
             <div>
               <p className="text-gray-400 text-sm">Completed</p>
-              <h3 className="text-white text-2xl font-bold">
+              <h3 className="text-white text-xl sm:text-2xl font-bold break-words">
                 {queueStats.completed}
               </h3>
             </div>
           </div>
 
-          <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-6 flex items-center gap-4">
+          <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-6 flex items-center gap-4 w-full h-full">
             <div className="p-3 bg-red-500/20 rounded-xl text-red-400 text-2xl">
               ✕
             </div>
             <div>
               <p className="text-gray-400 text-sm">Cancelled</p>
-              <h3 className="text-white text-2xl font-bold">
+              <h3 className="text-white text-xl sm:text-2xl font-bold break-words">
                 {queueStats.cancelled}
               </h3>
             </div>
           </div>
 
-          <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-6 flex items-center gap-4">
+          <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-6 flex items-center gap-4 w-full h-full">
             <div className="p-3 bg-yellow-500/20 rounded-xl text-yellow-400 text-2xl">
               ⏱
             </div>
             <div>
               <p className="text-gray-400 text-sm">Avg Wait Time</p>
-              <h3 className="text-white text-2xl font-bold">
+              <h3 className="text-white text-xl sm:text-2xl font-bold break-words">
                 {queueStats.avgWaitTime} min
               </h3>
             </div>
@@ -311,7 +311,7 @@ function OwnerAnalytics() {
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
             {/* DAILY CUSTOMERS CHART */}
-            <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-8">
+            <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-6 sm:p-8">
               <h3 className="text-white text-xl font-bold mb-6 flex items-center gap-2">
                 <FiTrendingUp className="text-blue-400" />
                 Weekly Customers
@@ -341,7 +341,7 @@ function OwnerAnalytics() {
             </div>
 
             {/* PEAK HOURS CHART */}
-            <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-8">
+            <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-6 sm:p-8">
               <h3 className="text-white text-xl font-bold mb-6 flex items-center gap-2">
                 <FiActivity className="text-purple-400" />
                 Peak Hours
@@ -372,7 +372,7 @@ function OwnerAnalytics() {
             </div>
 
             {/* QUEUE STATUS PIE CHART */}
-            <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-8">
+            <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-6 sm:p-8">
               <h3 className="text-white text-xl font-bold mb-6 flex items-center gap-2">
                 <FiBarChart2 className="text-pink-400" />
                 Queue Status Distribution
@@ -411,7 +411,7 @@ function OwnerAnalytics() {
             </div>
 
             {/* COMPLETION RATE */}
-            <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-8">
+            <div className="bg-[#0d1730]/80 backdrop-blur-xl border border-[#1d2942] rounded-3xl p-6 sm:p-8">
               <h3 className="text-white text-xl font-bold mb-6 flex items-center gap-2">
                 <FiTrendingUp className="text-green-400" />
                 Completion Analysis

@@ -1,6 +1,6 @@
 function StatsCard({ title, value, subtitle, icon, trendDirection, trendValue }) {
   return (
-    <div className="bg-[#0B1120] border border-[#1A2234] rounded-3xl p-6 shadow-xl relative overflow-hidden group">
+    <div className="bg-[#0B1120] border border-[#1A2234] rounded-3xl p-6 w-full h-full shadow-xl relative overflow-hidden group">
       
       {/* BACKGROUND GLOW */}
       <div className="absolute -right-10 -top-10 w-32 h-32 bg-blue-500/10 blur-3xl rounded-full group-hover:bg-blue-500/20 transition duration-500"></div>
@@ -12,7 +12,7 @@ function StatsCard({ title, value, subtitle, icon, trendDirection, trendValue })
         </div>
       </div>
 
-      <h2 className="text-4xl font-bold text-white mb-2">{value}</h2>
+      <h2 className="text-3xl sm:text-4xl font-bold text-white mb-2 break-words">{value}</h2>
       
       <div className="flex items-center gap-2">
         {trendDirection === "up" && (

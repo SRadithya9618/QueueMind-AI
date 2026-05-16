@@ -1,6 +1,6 @@
 function Topbar({ user }) {
   return (
-    <div className="h-20 w-full flex items-center justify-between px-10 border-b border-[#1A2234] bg-[#050816]">
+    <div className="h-20 w-full flex items-center justify-between px-4 sm:px-6 md:px-10 border-b border-[#1A2234] bg-[#050816]">
       <div>
         <h2 className="text-xl font-bold text-white">Dashboard</h2>
       </div>

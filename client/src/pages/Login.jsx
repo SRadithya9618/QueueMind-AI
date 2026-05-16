@@ -32,9 +32,11 @@ function Login() {
 
     <div
       className="
-        h-screen
-        overflow-hidden
+        min-h-screen
+        overflow-x-hidden
         flex
+        flex-col
+        lg:flex-row
         bg-black
       "
     >
@@ -43,7 +45,8 @@ function Login() {
 
       <div
         className="
-          w-1/2
+          w-full
+          lg:w-1/2
           bg-gradient-to-br
           from-blue-600
           via-blue-500
@@ -51,7 +54,9 @@ function Login() {
           flex
           flex-col
           justify-center
-          px-12
+          px-6
+          sm:px-10
+          lg:px-12
           relative
         "
       >
@@ -62,8 +67,11 @@ function Login() {
           to="/"
           className="
             absolute
-            top-12
-            left-12
+            top-8
+            left-6
+            sm:left-10
+            lg:top-12
+            lg:left-12
             flex
             items-center
             gap-3
@@ -109,7 +117,7 @@ function Login() {
 
         {/* CONTENT */}
 
-        <div className="max-w-[450px] mt-28">
+        <div className="w-full max-w-[450px] mt-28">
 
           {/* BADGE */}
 
@@ -134,11 +142,14 @@ function Login() {
 
           <h1
             className="
-              text-[40px]
+              text-3xl
+              sm:text-4xl
+              lg:text-[40px]
               font-bold
               text-white
               leading-[1.1]
               mb-8
+              break-words
               
             "
           >
@@ -150,7 +161,9 @@ function Login() {
           <p
             className="
               text-white/90
-              text-2xl
+              text-lg
+              sm:text-xl
+              lg:text-2xl
               leading-relaxed
               mb-14
               max-w-[520px]
@@ -162,7 +175,7 @@ function Login() {
 
           {/* STATS */}
 
-          <div className="flex gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-3 lg:flex gap-5">
 
             {/* CARD 1 */}
 
@@ -171,13 +184,15 @@ function Login() {
                 bg-white/10
                 backdrop-blur-md
                 rounded-3xl
-                px-8
+                px-6
+                lg:px-8
                 py-6
-                w-[180px]
+                w-full
+                lg:w-[180px]
               "
             >
 
-              <h2 className="text-white text-5xl font-bold">
+              <h2 className="text-white text-3xl sm:text-4xl lg:text-5xl font-bold break-words">
                 94%
               </h2>
 
@@ -194,13 +209,15 @@ function Login() {
                 bg-white/10
                 backdrop-blur-md
                 rounded-3xl
-                px-8
+                px-6
+                lg:px-8
                 py-6
-                w-[180px]
+                w-full
+                lg:w-[180px]
               "
             >
 
-              <h2 className="text-white text-5xl font-bold">
+              <h2 className="text-white text-3xl sm:text-4xl lg:text-5xl font-bold break-words">
                 40%
               </h2>
 
@@ -217,13 +234,15 @@ function Login() {
                 bg-white/10
                 backdrop-blur-md
                 rounded-3xl
-                px-8
+                px-6
+                lg:px-8
                 py-6
-                w-[180px]
+                w-full
+                lg:w-[180px]
               "
             >
 
-              <h2 className="text-white text-5xl font-bold">
+              <h2 className="text-white text-3xl sm:text-4xl lg:text-5xl font-bold break-words">
                 1.2k
               </h2>
 
@@ -247,12 +266,16 @@ function Login() {
 
       <div
         className="
-          w-1/2
+          w-full
+          lg:w-1/2
           bg-[#050816]
           flex
           items-center
           justify-center
-          px-10
+          px-6
+          sm:px-10
+          py-10
+          lg:py-0
         
         "
       >
@@ -267,8 +290,10 @@ function Login() {
             border
             border-[#1A2234]
             rounded-[36px]
-            px-10
-            py-0
+            px-6
+            sm:px-10
+            py-8
+            lg:py-0
             shadow-2xl
           "
         >
@@ -277,7 +302,9 @@ function Login() {
 
           <h1
             className="
-              text-[40px]
+              text-3xl
+              sm:text-4xl
+              lg:text-[40px]
               font-bold
               text-white
               leading-none
@@ -294,7 +321,8 @@ function Login() {
             className="
               text-gray-400
               text-lg
-              mb-12
+              mb-8
+              sm:mb-12
             "
           >
             Welcome back. Enter your details to continue.
@@ -307,7 +335,8 @@ function Login() {
             className="
               flex
               flex-col
-              gap-3
+              gap-5
+              sm:gap-3
             "
           >
 
@@ -459,7 +488,7 @@ function Login() {
 
             {/* OPTIONS */}
 
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between gap-3">
 
               <label
                 className="
@@ -467,7 +496,8 @@ function Login() {
                   items-center
                   gap-3
                   text-gray-300
-                  text-lg
+                  text-base
+                  sm:text-lg
                 "
               >
 
@@ -485,7 +515,9 @@ function Login() {
                 className="
                   text-blue-400
                   hover:text-blue-300
-                  text-lg
+                  text-base
+                  sm:text-lg
+                  whitespace-nowrap
                 "
               >
                 Forgot?
@@ -499,6 +531,8 @@ function Login() {
               type="submit"
               className="
                 w-full
+                mt-2
+                sm:mt-0
                 py-5
                 rounded-2xl
                 text-white
@@ -525,8 +559,12 @@ function Login() {
             className="
               text-center
               text-gray-400
-              text-lg
-              mt-10
+              text-base
+              sm:text-lg
+              mt-6
+              sm:mt-10
+              mb-2
+              lg:mb-0
             "
           >
 

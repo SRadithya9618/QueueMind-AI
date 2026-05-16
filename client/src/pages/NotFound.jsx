@@ -15,6 +15,7 @@ function NotFound() {
         items-center
         justify-center
         px-6
+        overflow-x-hidden
       "
     >
 
@@ -29,7 +30,9 @@ function NotFound() {
 
         <h1
           className="
-            text-[180px]
+            text-7xl
+            sm:text-8xl
+            lg:text-[180px]
             font-bold
             leading-none
             bg-gradient-to-r
@@ -47,7 +50,9 @@ function NotFound() {
         <h2
           className="
             text-white
-            text-6xl
+            text-3xl
+            sm:text-4xl
+            lg:text-6xl
             font-bold
             mb-6
           "
@@ -60,7 +65,9 @@ function NotFound() {
         <p
           className="
             text-gray-300
-            text-2xl
+            text-lg
+            sm:text-xl
+            lg:text-2xl
             leading-relaxed
             mb-12
           "
@@ -74,6 +81,8 @@ function NotFound() {
         <div
           className="
             flex
+            flex-col
+            sm:flex-row
             items-center
             justify-center
             gap-6
@@ -87,12 +96,16 @@ function NotFound() {
                 bg-gradient-to-r
                 from-blue-500
                 to-purple-500
-                px-10
+                px-8
+                lg:px-10
                 py-5
                 rounded-2xl
-                text-xl
+                text-lg
+                lg:text-xl
                 font-semibold
                 text-white
+                w-full
+                sm:w-auto
               "
             >
               Go Home
@@ -107,12 +120,16 @@ function NotFound() {
                 border
                 border-[#2B315A]
                 bg-[#141933]
-                px-10
+                px-8
+                lg:px-10
                 py-5
                 rounded-2xl
-                text-xl
+                text-lg
+                lg:text-xl
                 font-semibold
                 text-white
+                w-full
+                sm:w-auto
               "
             >
               Login
