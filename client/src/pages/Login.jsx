@@ -6,9 +6,14 @@ function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    if (loading) return;
+
+    setLoading(true);
+
     try {
       const response = await API.post("/auth/login", { email, password });
       
@@ -25,6 +30,8 @@ function Login() {
     } catch (err) {
       console.log(err);
       alert(err.response?.data?.message || "Login failed");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -391,6 +398,7 @@ function Login() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  disabled={loading}
                   placeholder="you@gmail.com"
                   className="
                     w-full
@@ -406,6 +414,8 @@ function Login() {
                     outline-none
                     focus:border-blue-500
                     placeholder-gray-500
+                    disabled:cursor-not-allowed
+                    disabled:opacity-70
                   "
                 />
 
@@ -464,6 +474,7 @@ function Login() {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  disabled={loading}
                   placeholder="••••••••"
                   className="
                     w-full
@@ -479,6 +490,8 @@ function Login() {
                     outline-none
                     focus:border-blue-500
                     placeholder-gray-500
+                    disabled:cursor-not-allowed
+                    disabled:opacity-70
                   "
                 />
 
@@ -512,12 +525,15 @@ function Login() {
 
               <button
                 type="button"
+                disabled={loading}
                 className="
                   text-blue-400
                   hover:text-blue-300
                   text-base
                   sm:text-lg
                   whitespace-nowrap
+                  disabled:cursor-not-allowed
+                  disabled:opacity-60
                 "
               >
                 Forgot?
@@ -529,26 +545,54 @@ function Login() {
 
             <button
               type="submit"
+              disabled={loading}
+              aria-busy={loading}
               className="
                 w-full
                 mt-2
                 sm:mt-0
                 py-5
                 rounded-2xl
+                inline-flex
+                items-center
+                justify-center
+                gap-3
                 text-white
-                text-xl
+                text-lg
+                sm:text-xl
                 font-semibold
                 bg-gradient-to-r
                 from-blue-500
                 via-blue-400
                 to-pink-500
                 hover:scale-[1.02]
-                transition
+                transition-all
                 duration-300
                 cursor-pointer
+                min-h-[64px]
+                disabled:cursor-not-allowed
+                disabled:opacity-80
+                disabled:hover:scale-100
               "
             >
-              Sign in →
+              {loading && (
+                <span
+                  aria-hidden="true"
+                  className="
+                    h-5
+                    w-5
+                    shrink-0
+                    rounded-full
+                    border-2
+                    border-white/40
+                    border-t-white
+                    animate-spin
+                  "
+                />
+              )}
+              <span className="leading-none">
+                {loading ? "Please wait..." : "Sign in →"}
+              </span>
             </button>
 
           </form>
